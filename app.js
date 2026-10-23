@@ -74,16 +74,19 @@ const deleteTask = function () {
   taskList.removeChild(listItem);
 };
 
+const moveTask = function (taskListItem, targetList, checkBoxEventHandler) {
+  targetList.appendChild(taskListItem);
+  bindTaskEvents(taskListItem, checkBoxEventHandler);
+};
+
 const taskCompleted = function () {
   const listItem = this.parentNode;
-  completedTasksHolder.appendChild(listItem);
-  bindTaskEvents(listItem, taskIncomplete);
+  moveTask(listItem, completedTasksHolder, taskIncomplete);
 };
 
 const taskIncomplete = function () {
   const listItem = this.parentNode;
-  incompleteTaskHolder.appendChild(listItem);
-  bindTaskEvents(listItem, taskCompleted);
+  moveTask(listItem, incompleteTaskHolder, taskCompleted);
 };
 
 addButton.addEventListener('click', addTask);
