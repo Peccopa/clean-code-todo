@@ -11,8 +11,8 @@
   },
   "lint-staged": {
     "*.{js,html,css,json,md}": [
-      "prettier --write",
-      "eslint --fix"
+      "prettier --check",
+      "eslint"
     ]
   },
   "repository": {
